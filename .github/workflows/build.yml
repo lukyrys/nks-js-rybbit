@@ -51,6 +51,23 @@ jobs:
         with:
           files: dist/*
           generate_release_notes: true
+          body: |
+            ## Install
+
+            ```bash
+            npm install @nks-hub/rybbit
+            ```
+
+            ## Assets
+
+            | File | Description |
+            |------|-------------|
+            | `index.iife.min.js` | Browser bundle (minified) - use via `<script>` tag |
+            | `index.iife.js` | Browser bundle (full, for debugging) |
+            | `index.esm.js` | ES Module - for bundlers (Vite, Webpack, Rollup) |
+            | `index.js` | CommonJS - for Node.js / `require()` |
+            | `index.d.ts` / `index.d.cts` | TypeScript type declarations |
+            | `*.map` | Source maps for debugging |
 
   publish:
     if: startsWith(github.ref, 'refs/tags/v')
