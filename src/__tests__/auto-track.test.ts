@@ -24,12 +24,12 @@ describe("Auto-track", () => {
     });
   }
 
-  it("tracks click on element with data-nh-rybbit-event", async () => {
+  it("tracks click on element with data-nhr-event", async () => {
     await bootWithAutoTrack();
     const spy = vi.spyOn(sdk, "event");
 
     const btn = document.createElement("button");
-    btn.setAttribute("data-nh-rybbit-event", "click_cta");
+    btn.setAttribute("data-nhr-event", "click_cta");
     document.body.appendChild(btn);
 
     btn.click();
@@ -37,14 +37,14 @@ describe("Auto-track", () => {
     expect(spy).toHaveBeenCalledWith("click_cta", undefined);
   });
 
-  it("extracts additional properties from data-nh-rybbit-* attributes", async () => {
+  it("extracts additional properties from data-nhr-* attributes", async () => {
     await bootWithAutoTrack();
     const spy = vi.spyOn(sdk, "event");
 
     const btn = document.createElement("button");
-    btn.setAttribute("data-nh-rybbit-event", "click_cta");
-    btn.setAttribute("data-nh-rybbit-button", "buy_now");
-    btn.setAttribute("data-nh-rybbit-location", "hero");
+    btn.setAttribute("data-nhr-event", "click_cta");
+    btn.setAttribute("data-nhr-button", "buy_now");
+    btn.setAttribute("data-nhr-location", "hero");
     document.body.appendChild(btn);
 
     btn.click();
@@ -60,8 +60,8 @@ describe("Auto-track", () => {
     const spy = vi.spyOn(sdk, "event");
 
     const btn = document.createElement("button");
-    btn.setAttribute("data-nh-rybbit-event", "test");
-    btn.setAttribute("data-nh-rybbit-button-type", "primary");
+    btn.setAttribute("data-nhr-event", "test");
+    btn.setAttribute("data-nhr-button-type", "primary");
     document.body.appendChild(btn);
 
     btn.click();
@@ -74,8 +74,8 @@ describe("Auto-track", () => {
     const spy = vi.spyOn(sdk, "event");
 
     const div = document.createElement("div");
-    div.setAttribute("data-nh-rybbit-event", "banner_click");
-    div.setAttribute("data-nh-rybbit-banner", "top");
+    div.setAttribute("data-nhr-event", "banner_click");
+    div.setAttribute("data-nhr-banner", "top");
     const span = document.createElement("span");
     span.textContent = "Click me";
     div.appendChild(span);
@@ -86,7 +86,7 @@ describe("Auto-track", () => {
     expect(spy).toHaveBeenCalledWith("banner_click", { banner: "top" });
   });
 
-  it("does not track elements without data-nh-rybbit-event", async () => {
+  it("does not track elements without data-nhr-event", async () => {
     await bootWithAutoTrack();
     const spy = vi.spyOn(sdk, "event");
 
@@ -109,7 +109,7 @@ describe("Auto-track", () => {
     const spy = vi.spyOn(sdk, "event");
 
     const btn = document.createElement("button");
-    btn.setAttribute("data-nh-rybbit-event", "click_cta");
+    btn.setAttribute("data-nhr-event", "click_cta");
     document.body.appendChild(btn);
 
     btn.click();
@@ -122,7 +122,7 @@ describe("Auto-track", () => {
     const spy = vi.spyOn(sdk, "event");
 
     const btn = document.createElement("button");
-    btn.setAttribute("data-nh-rybbit-event", "click_cta");
+    btn.setAttribute("data-nhr-event", "click_cta");
     document.body.appendChild(btn);
 
     sdk.destroy();

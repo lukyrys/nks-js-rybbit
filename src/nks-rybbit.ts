@@ -558,12 +558,12 @@ export class NksRybbitSDK {
     if (typeof document === "undefined") return;
 
     const selector =
-      this.config?.identitySelector ?? "[data-nh-rybbit-user-id]";
+      this.config?.identitySelector ?? "[data-nhr-user-id]";
 
     const el = document.querySelector(selector);
     if (el) {
       const userId =
-        el.getAttribute("data-nh-rybbit-user-id") ??
+        el.getAttribute("data-nhr-user-id") ??
         el.getAttribute("data-user-id") ??
         el.getAttribute("content") ??
         el.textContent?.trim();

@@ -2,15 +2,15 @@ import { log } from "./logger";
 import type { NksRybbitSDK } from "./nks-rybbit";
 import type { EventProperties } from "./types";
 
-const ATTR_PREFIX = "data-nh-rybbit-";
-const EVENT_ATTR = "data-nh-rybbit-event";
+const ATTR_PREFIX = "data-nhr-";
+const EVENT_ATTR = "data-nhr-event";
 const SELECTOR = `[${EVENT_ATTR}]`;
 
 let clickHandler: ((e: Event) => void) | null = null;
 
 /**
  * Convert kebab-case attribute name to snake_case property key.
- * e.g. "data-nh-rybbit-button-type" → "button_type"
+ * e.g. "data-nhr-button-type" → "button_type"
  */
 function attrToKey(attr: string): string {
   return attr.slice(ATTR_PREFIX.length).replace(/-/g, "_");

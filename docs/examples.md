@@ -35,7 +35,7 @@ Full working examples for common @nks-hub/rybbit SDK integration scenarios. Thes
   <title>E-shop Integration</title>
 
   <!-- Set user ID via meta tag (optional) -->
-  <meta data-nh-rybbit-user-id="user@example.com">
+  <meta data-nhr-user-id="user@example.com">
 
   <!-- Load Rybbit SDK -->
   <script src="https://cdn.example.com/nks-rybbit.iife.min.js"></script>
@@ -537,7 +537,7 @@ document.querySelectorAll('.share-btn').forEach((btn) => {
 
 ```html
 <!-- In theme header (header.tpl / head section) -->
-<meta data-nh-rybbit-user-id="{if $customer->isLogged()}{$customer->email}{/if}">
+<meta data-nhr-user-id="{if $customer->isLogged()}{$customer->email}{/if}">
 <script src="/themes/your-theme/assets/nks-rybbit.iife.min.js"></script>
 <script>
   var sdk = NksRybbit.default;
@@ -584,7 +584,7 @@ document.querySelectorAll('.share-btn').forEach((btn) => {
 
 **Scenario:** Track clicks on interactive elements using only HTML attributes—no JavaScript event listeners needed.
 
-**Key Features:** Declarative tracking via `data-nh-rybbit-*` attributes, event delegation, dynamic element support
+**Key Features:** Declarative tracking via `data-nhr-*` attributes, event delegation, dynamic element support
 
 ```html
 <!DOCTYPE html>
@@ -595,26 +595,26 @@ document.querySelectorAll('.share-btn').forEach((btn) => {
 <body>
 
 <!-- Hero CTA -->
-<button data-nh-rybbit-event="click_cta"
-        data-nh-rybbit-button="free_trial"
-        data-nh-rybbit-location="hero">
+<button data-nhr-event="click_cta"
+        data-nhr-button="free_trial"
+        data-nhr-location="hero">
   Start Free Trial
 </button>
 
 <!-- Navigation links -->
 <nav>
   <a href="/pricing"
-     data-nh-rybbit-event="nav_click"
-     data-nh-rybbit-item="pricing">Pricing</a>
+     data-nhr-event="nav_click"
+     data-nhr-item="pricing">Pricing</a>
   <a href="/docs"
-     data-nh-rybbit-event="nav_click"
-     data-nh-rybbit-item="docs">Docs</a>
+     data-nhr-event="nav_click"
+     data-nhr-item="docs">Docs</a>
 </nav>
 
 <!-- Product card with child elements -->
-<div data-nh-rybbit-event="product_click"
-     data-nh-rybbit-product-id="SKU-123"
-     data-nh-rybbit-category="hair-care">
+<div data-nhr-event="product_click"
+     data-nhr-product-id="SKU-123"
+     data-nhr-category="hair-care">
   <img src="product.jpg" alt="Shampoo">
   <h3>Loreal Shampoo</h3>
   <span class="price">299 Kč</span>

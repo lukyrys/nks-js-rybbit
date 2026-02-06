@@ -62,10 +62,10 @@ Configuration object passed to the `boot()` method during initialization.
 | `loadStrategy`       | `'script'` \| `'sdk'` \| `'detect'` | `'detect'`    | Loading strategy for Rybbit tracker            |
 | `loadTimeout`        | `number`              | `5000`                    | Maximum time (ms) to wait for tracker load    |
 | `autoIdentify`       | `boolean`             | `true`                    | Automatically identify users from DOM          |
-| `identitySelector`   | `string`              | `'[data-nh-rybbit-user-id]'`    | CSS selector for user identity element         |
+| `identitySelector`   | `string`              | `'[data-nhr-user-id]'`    | CSS selector for user identity element         |
 | `gtmBridge`          | `boolean`             | `false`                   | Enable Google Tag Manager bridge               |
 | `gtmEvents`          | `string[]`            | `[]`                      | List of GTM events to forward to Rybbit        |
-| `autoTrack`          | `boolean`             | `false`                   | Auto-track clicks on `data-nh-rybbit-event` elements |
+| `autoTrack`          | `boolean`             | `false`                   | Auto-track clicks on `data-nhr-event` elements |
 | `globalProperties`   | `Record<string, PropertyValue>` | `{}`        | Properties automatically added to every event  |
 
 **Example:**
@@ -446,21 +446,21 @@ unsubscribe();
 
 ## Auto-Track
 
-When `autoTrack: true` is set in the configuration, the SDK automatically tracks clicks on DOM elements with `data-nh-rybbit-event` attributes using event delegation.
+When `autoTrack: true` is set in the configuration, the SDK automatically tracks clicks on DOM elements with `data-nhr-event` attributes using event delegation.
 
 ### Attribute Convention
 
 | Attribute | Purpose |
 |-----------|---------|
-| `data-nh-rybbit-event` | Event name (required) |
-| `data-nh-rybbit-*` | Event properties (prefix stripped, kebab→snake_case) |
+| `data-nhr-event` | Event name (required) |
+| `data-nhr-*` | Event properties (prefix stripped, kebab→snake_case) |
 
 ### Example
 
 ```html
-<button data-nh-rybbit-event="click_cta"
-        data-nh-rybbit-button="buy_now"
-        data-nh-rybbit-location="hero">
+<button data-nhr-event="click_cta"
+        data-nhr-button="buy_now"
+        data-nhr-location="hero">
   Buy Now
 </button>
 <!-- Sends: event("click_cta", { button: "buy_now", location: "hero" }) -->
@@ -470,7 +470,7 @@ When `autoTrack: true` is set in the configuration, the SDK automatically tracks
 
 - Uses a single delegated `click` listener on `document`
 - Dynamically added elements are tracked automatically
-- Child element clicks bubble to the nearest `[data-nh-rybbit-event]` ancestor
+- Child element clicks bubble to the nearest `[data-nhr-event]` ancestor
 - Listener is removed on `destroy()`
 
 ---
