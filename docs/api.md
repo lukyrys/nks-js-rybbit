@@ -62,9 +62,10 @@ Configuration object passed to the `boot()` method during initialization.
 | `loadStrategy`       | `'script'` \| `'sdk'` \| `'detect'` | `'detect'`    | Loading strategy for Rybbit tracker            |
 | `loadTimeout`        | `number`              | `5000`                    | Maximum time (ms) to wait for tracker load    |
 | `autoIdentify`       | `boolean`             | `true`                    | Automatically identify users from DOM          |
-| `identitySelector`   | `string`              | `'[data-nks-user-id]'`    | CSS selector for user identity element         |
+| `identitySelector`   | `string`              | `'[data-nh-rybbit-user-id]'`    | CSS selector for user identity element         |
 | `gtmBridge`          | `boolean`             | `false`                   | Enable Google Tag Manager bridge               |
 | `gtmEvents`          | `string[]`            | `[]`                      | List of GTM events to forward to Rybbit        |
+| `autoTrack`          | `boolean`             | `false`                   | Auto-track clicks on `data-nh-rybbit-event` elements |
 | `globalProperties`   | `Record<string, PropertyValue>` | `{}`        | Properties automatically added to every event  |
 
 **Example:**
@@ -440,6 +441,37 @@ const unsubscribe = nksRybbit.onPageChange((newPath, oldPath) => {
 // Later: stop listening
 unsubscribe();
 ```
+
+---
+
+## Auto-Track
+
+When `autoTrack: true` is set in the configuration, the SDK automatically tracks clicks on DOM elements with `data-nh-rybbit-event` attributes using event delegation.
+
+### Attribute Convention
+
+| Attribute | Purpose |
+|-----------|---------|
+| `data-nh-rybbit-event` | Event name (required) |
+| `data-nh-rybbit-*` | Event properties (prefix stripped, kebab→snake_case) |
+
+### Example
+
+```html
+<button data-nh-rybbit-event="click_cta"
+        data-nh-rybbit-button="buy_now"
+        data-nh-rybbit-location="hero">
+  Buy Now
+</button>
+<!-- Sends: event("click_cta", { button: "buy_now", location: "hero" }) -->
+```
+
+### Behavior
+
+- Uses a single delegated `click` listener on `document`
+- Dynamically added elements are tracked automatically
+- Child element clicks bubble to the nearest `[data-nh-rybbit-event]` ancestor
+- Listener is removed on `destroy()`
 
 ---
 

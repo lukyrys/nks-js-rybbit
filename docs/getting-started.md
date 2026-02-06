@@ -37,7 +37,8 @@ await nksRybbit.boot({
   loadStrategy: 'detect',            // 'script' | 'sdk' | 'detect'
   loadTimeout: 5000,                 // Timeout in milliseconds
   autoIdentify: true,                // Auto-identify users from DOM
-  identitySelector: '[data-nks-user-id]',
+  identitySelector: '[data-nh-rybbit-user-id]',
+  autoTrack: false,                    // Auto-track clicks on data-nh-rybbit-event elements
   globalProperties: {                // Properties added to every event
     site: 'my-site',
     env: 'production'
@@ -59,7 +60,8 @@ await nksRybbit.boot({
 | `loadStrategy` | `'detect' \| 'script' \| 'sdk'` | `'detect'` | How to load Rybbit core (see below) |
 | `loadTimeout` | `number` | `5000` | Maximum time to wait for SDK load (ms) |
 | `autoIdentify` | `boolean` | `true` | Automatically identify users from DOM |
-| `identitySelector` | `string` | `'[data-nks-user-id]'` | CSS selector for user identity element |
+| `identitySelector` | `string` | `'[data-nh-rybbit-user-id]'` | CSS selector for user identity element |
+| `autoTrack` | `boolean` | `false` | Auto-track clicks on `data-nh-rybbit-event` elements |
 | `globalProperties` | `object` | `{}` | Properties included in every event |
 | `gtmBridge` | `boolean` | `false` | Enable Google Tag Manager integration |
 | `gtmEvents` | `string[]` | `[]` | Filter GTM events to forward to Rybbit |
@@ -137,10 +139,10 @@ await sdk.boot({
 
 ## Auto-Identify
 
-By default, the SDK automatically identifies users by looking for a DOM element with the `data-nks-user-id` attribute:
+By default, the SDK automatically identifies users by looking for a DOM element with the `data-nh-rybbit-user-id` attribute:
 
 ```html
-<meta data-nks-user-id="user@example.com">
+<meta data-nh-rybbit-user-id="user@example.com">
 ```
 
 The attribute value is passed to `rybbit.identify()` automatically on boot.
@@ -171,6 +173,43 @@ await nksRybbit.boot({
 // Manually identify users later
 nksRybbit.identify('user@example.com');
 ```
+
+---
+
+## Auto-Track (DOM Click Tracking)
+
+When `autoTrack: true`, the SDK automatically tracks clicks on any element with a `data-nh-rybbit-event` attribute. No JavaScript event listeners required.
+
+### How It Works
+
+Add `data-nh-rybbit-event` to set the event name, and any additional `data-nh-rybbit-*` attributes become event properties:
+
+```html
+<button data-nh-rybbit-event="click_cta" data-nh-rybbit-button="buy_now" data-nh-rybbit-location="hero">
+  Buy Now
+</button>
+<!-- Click fires: event("click_cta", { button: "buy_now", location: "hero" }) -->
+```
+
+### Configuration
+
+```typescript
+await nksRybbit.boot({
+  host: 'https://demo.rybbit.com',
+  siteId: 'your-site-id',
+  autoTrack: true,
+});
+```
+
+### Attribute Convention
+
+- `data-nh-rybbit-event` — event name (required, determines which elements are tracked)
+- `data-nh-rybbit-*` — all other attributes become properties with the prefix stripped
+- Kebab-case attributes are converted to snake_case: `data-nh-rybbit-button-type` → `button_type`
+
+### Event Delegation
+
+Uses a single delegated listener on `document`, so dynamically added elements are tracked automatically. Clicking a child element bubbles up to the nearest `[data-nh-rybbit-event]` ancestor.
 
 ---
 

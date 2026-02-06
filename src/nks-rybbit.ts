@@ -11,6 +11,7 @@ import { log, warn, error as logErr, setDebug, setDryRun, isDryRun } from "./log
 import { loadRybbit } from "./loader";
 import { enqueue, flush, clearQueue } from "./queue";
 import { setupGtmBridge, teardownGtmBridge } from "./gtm-bridge";
+import { setupAutoTrack, teardownAutoTrack } from "./auto-track";
 
 type BootState = "idle" | "booting" | "ready" | "failed";
 
@@ -63,6 +64,11 @@ export class NksRybbitSDK {
       // Setup GTM bridge
       if (config.gtmBridge) {
         setupGtmBridge(this.rybbit, config);
+      }
+
+      // Setup auto-track
+      if (config.autoTrack) {
+        setupAutoTrack(this);
       }
 
       // Flush queued events
@@ -468,6 +474,7 @@ export class NksRybbitSDK {
   }
 
   destroy(): void {
+    teardownAutoTrack();
     teardownGtmBridge();
     this.rybbit?.cleanup?.();
     clearQueue();
@@ -551,12 +558,12 @@ export class NksRybbitSDK {
     if (typeof document === "undefined") return;
 
     const selector =
-      this.config?.identitySelector ?? "[data-nks-user-id]";
+      this.config?.identitySelector ?? "[data-nh-rybbit-user-id]";
 
     const el = document.querySelector(selector);
     if (el) {
       const userId =
-        el.getAttribute("data-nks-user-id") ??
+        el.getAttribute("data-nh-rybbit-user-id") ??
         el.getAttribute("data-user-id") ??
         el.getAttribute("content") ??
         el.textContent?.trim();

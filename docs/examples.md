@@ -15,8 +15,9 @@ Full working examples for common @nks-hub/rybbit SDK integration scenarios. Thes
 7. [Promotions and Wishlist](#promotions-and-wishlist)
 8. [Video and Content Engagement](#video-and-content-engagement)
 9. [PrestaShop Integration](#prestashop-integration)
-10. [Error Tracking](#error-tracking)
-11. [Event Listeners and Debug Mode](#event-listeners-and-debug-mode)
+10. [Auto-Track: Zero-JS Click Tracking](#auto-track-zero-js-click-tracking)
+11. [Error Tracking](#error-tracking)
+12. [Event Listeners and Debug Mode](#event-listeners-and-debug-mode)
 
 ---
 
@@ -34,7 +35,7 @@ Full working examples for common @nks-hub/rybbit SDK integration scenarios. Thes
   <title>E-shop Integration</title>
 
   <!-- Set user ID via meta tag (optional) -->
-  <meta data-nks-user-id="user@example.com">
+  <meta data-nh-rybbit-user-id="user@example.com">
 
   <!-- Load Rybbit SDK -->
   <script src="https://cdn.example.com/nks-rybbit.iife.min.js"></script>
@@ -536,7 +537,7 @@ document.querySelectorAll('.share-btn').forEach((btn) => {
 
 ```html
 <!-- In theme header (header.tpl / head section) -->
-<meta data-nks-user-id="{if $customer->isLogged()}{$customer->email}{/if}">
+<meta data-nh-rybbit-user-id="{if $customer->isLogged()}{$customer->email}{/if}">
 <script src="/themes/your-theme/assets/nks-rybbit.iife.min.js"></script>
 <script>
   var sdk = NksRybbit.default;
@@ -575,6 +576,68 @@ document.querySelectorAll('.share-btn').forEach((btn) => {
     ]
   });
 </script>
+```
+
+---
+
+## Auto-Track: Zero-JS Click Tracking
+
+**Scenario:** Track clicks on interactive elements using only HTML attributes—no JavaScript event listeners needed.
+
+**Key Features:** Declarative tracking via `data-nh-rybbit-*` attributes, event delegation, dynamic element support
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="nks-rybbit.iife.min.js"></script>
+</head>
+<body>
+
+<!-- Hero CTA -->
+<button data-nh-rybbit-event="click_cta"
+        data-nh-rybbit-button="free_trial"
+        data-nh-rybbit-location="hero">
+  Start Free Trial
+</button>
+
+<!-- Navigation links -->
+<nav>
+  <a href="/pricing"
+     data-nh-rybbit-event="nav_click"
+     data-nh-rybbit-item="pricing">Pricing</a>
+  <a href="/docs"
+     data-nh-rybbit-event="nav_click"
+     data-nh-rybbit-item="docs">Docs</a>
+</nav>
+
+<!-- Product card with child elements -->
+<div data-nh-rybbit-event="product_click"
+     data-nh-rybbit-product-id="SKU-123"
+     data-nh-rybbit-category="hair-care">
+  <img src="product.jpg" alt="Shampoo">
+  <h3>Loreal Shampoo</h3>
+  <span class="price">299 Kč</span>
+</div>
+
+<script>
+  var sdk = NksRybbit.default;
+
+  sdk.boot({
+    host: 'https://demo.rybbit.com',
+    siteId: 'your-site-id',
+    autoTrack: true
+  });
+
+  // No additional JS needed!
+  // Clicking "Start Free Trial" sends:
+  //   event("click_cta", { button: "free_trial", location: "hero" })
+  //
+  // Clicking anywhere inside the product card sends:
+  //   event("product_click", { product_id: "SKU-123", category: "hair-care" })
+</script>
+</body>
+</html>
 ```
 
 ---

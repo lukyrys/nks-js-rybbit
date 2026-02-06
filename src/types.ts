@@ -40,6 +40,9 @@ export interface NksRybbitConfig {
   /** GTM event names to forward to Rybbit (if gtmBridge enabled) */
   gtmEvents?: string[];
 
+  /** Auto-track clicks on elements with data-nh-rybbit-event attribute (default: false) */
+  autoTrack?: boolean;
+
   /** Global properties added to every event */
   globalProperties?: Record<string, PropertyValue>;
 }
