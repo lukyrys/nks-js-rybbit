@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tgz
+
+.[a-z]*/
+!.git/
+!.github/
+/[A-Z]*.md
+!/README.md
