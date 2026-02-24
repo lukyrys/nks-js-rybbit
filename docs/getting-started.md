@@ -1,6 +1,6 @@
 # Getting Started
 
-This guide will help you install, configure, and start using the `@nks-hub/rybbit` SDK—a TypeScript wrapper for Rybbit Analytics. You'll learn how to integrate privacy-first, cookieless analytics into your web application with minimal effort.
+This guide will help you install, configure, and start using the `@nks-hub/rybbit-ts` SDK—a TypeScript wrapper for Rybbit Analytics. You'll learn how to integrate privacy-first, cookieless analytics into your web application with minimal effort.
 
 > **Note:** Rybbit is a privacy-first analytics platform that doesn't use cookies. No cookie consent management required.
 
@@ -11,7 +11,7 @@ This guide will help you install, configure, and start using the `@nks-hub/rybbi
 Install the SDK via npm:
 
 ```bash
-npm install @nks-hub/rybbit
+npm install @nks-hub/rybbit-ts
 ```
 
 Alternatively, you can use the IIFE bundle directly via a script tag for non-bundled environments.
@@ -23,7 +23,7 @@ Alternatively, you can use the IIFE bundle directly via a script tag for non-bun
 Import and initialize the SDK with your Rybbit instance details:
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 await nksRybbit.boot({
   // Required
@@ -348,4 +348,4 @@ Now that you've configured the SDK, explore these guides:
 
 ---
 
-**Need help?** Open an issue on [GitHub](https://github.com/nks-hub/nks-js-rybbit/issues).
+**Need help?** Open an issue on [GitHub](https://github.com/nks-hub/rybbit-ts/issues).

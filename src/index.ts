@@ -23,7 +23,7 @@ import { getInstance } from "./nks-rybbit";
  *   </script>
  *
  * Usage (ES module):
- *   import nksRybbit from '@nks-hub/rybbit';
+ *   import nksRybbit from '@nks-hub/rybbit-ts';
  *   await nksRybbit.boot({ host: 'https://demo.rybbit.com', siteId: 'abc123' });
  *   nksRybbit.event('click_cta', { button: 'hero' });
  */

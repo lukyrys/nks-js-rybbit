@@ -1,6 +1,6 @@
 # Integration Examples
 
-Full working examples for common @nks-hub/rybbit SDK integration scenarios. These examples demonstrate real-world implementations across different platforms and use cases.
+Full working examples for common @nks-hub/rybbit-ts SDK integration scenarios. These examples demonstrate real-world implementations across different platforms and use cases.
 
 ---
 
@@ -118,7 +118,7 @@ Full working examples for common @nks-hub/rybbit SDK integration scenarios. Thes
 **Key Features:** Async boot, event queueing, type-safe tracking functions
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 // Boot early - events are queued until ready
 await nksRybbit.boot({
@@ -263,7 +263,7 @@ function completePurchase(
 **Key Events:** Search, scroll depth, comments, ratings, file downloads, outbound links
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 await nksRybbit.boot({
   host: 'https://demo.rybbit.com',
@@ -412,7 +412,7 @@ document.querySelectorAll('a[href^="http"]').forEach((link) => {
 **Key Features:** User identification, authentication method tracking, session management
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 await nksRybbit.boot({
   host: 'https://demo.rybbit.com',
@@ -459,7 +459,7 @@ function onLogout() {
 **Key Events:** Promotion impressions, promotion clicks, wishlist additions
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 // --- Promotion tracking ---
 
@@ -498,7 +498,7 @@ function onAddToWishlist(product: { id: string; name: string; price: number }) {
 **Key Events:** Video play, social media sharing
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 // --- Video tracking ---
 
@@ -649,7 +649,7 @@ document.querySelectorAll('.share-btn').forEach((btn) => {
 **Key Features:** Global error handler, unhandled promise rejections, try-catch integration
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 // --- Global error handler ---
 
@@ -690,7 +690,7 @@ async function loadCheckout() {
 **Key Features:** Debug mode, dry run, event listeners, state inspection, cleanup handlers
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 // Boot with debug options
 await nksRybbit.boot({

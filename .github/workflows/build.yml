@@ -55,7 +55,7 @@ jobs:
             ## Install
 
             ```bash
-            npm install @nks-hub/rybbit
+            npm install @nks-hub/rybbit-ts
             ```
 
             ## Assets

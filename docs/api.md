@@ -1,6 +1,6 @@
 # API Reference
 
-Complete API documentation for **@nks-hub/rybbit** - a TypeScript SDK for Rybbit Analytics.
+Complete API documentation for **@nks-hub/rybbit-ts** - a TypeScript SDK for Rybbit Analytics.
 
 ---
 
@@ -29,10 +29,10 @@ The SDK provides both a singleton instance and a class for advanced use cases.
 
 ```typescript
 // Singleton instance (recommended for most applications)
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 // Class for multiple instances
-import { NksRybbitSDK } from '@nks-hub/rybbit';
+import { NksRybbitSDK } from '@nks-hub/rybbit-ts';
 
 // TypeScript types
 import type {
@@ -41,7 +41,7 @@ import type {
   PropertyValue,
   EcommerceItem,
   StandardEvents,
-} from '@nks-hub/rybbit';
+} from '@nks-hub/rybbit-ts';
 ```
 
 ---

@@ -1,7 +1,7 @@
-# @nks-hub/rybbit
+# @nks-hub/rybbit-ts
 
-[![Build Status](https://github.com/nks-hub/nks-js-rybbit/actions/workflows/build.yml/badge.svg)](https://github.com/nks-hub/nks-js-rybbit/actions)
-[![npm version](https://img.shields.io/npm/v/@nks-hub/rybbit.svg)](https://www.npmjs.com/package/@nks-hub/rybbit)
+[![Build Status](https://github.com/nks-hub/rybbit-ts/actions/workflows/build.yml/badge.svg)](https://github.com/nks-hub/rybbit-ts/actions)
+[![npm version](https://img.shields.io/npm/v/@nks-hub/rybbit-ts.svg)](https://www.npmjs.com/package/@nks-hub/rybbit-ts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 > Privacy-first analytics SDK for TypeScript - A modern wrapper for [Rybbit Analytics](https://rybbit.io) with typed events, GTM integration, and zero-configuration setup.
@@ -27,7 +27,7 @@ Rybbit Analytics provides GDPR-compliant, cookieless tracking without requiring 
 ### Installation
 
 ```bash
-npm install @nks-hub/rybbit
+npm install @nks-hub/rybbit-ts
 ```
 
 ### Usage
@@ -35,7 +35,7 @@ npm install @nks-hub/rybbit
 #### ES Module
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 // Initialize SDK
 await nksRybbit.boot({
@@ -113,7 +113,7 @@ Comprehensive guides to get you up and running:
 ## Configuration Example
 
 ```typescript
-import nksRybbit from '@nks-hub/rybbit';
+import nksRybbit from '@nks-hub/rybbit-ts';
 
 await nksRybbit.boot({
   // Required
@@ -171,9 +171,9 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## Links
 
 - [Rybbit Analytics](https://rybbit.io)
-- [GitHub Repository](https://github.com/nks-hub/nks-js-rybbit)
-- [npm Package](https://www.npmjs.com/package/@nks-hub/rybbit)
-- [Issue Tracker](https://github.com/nks-hub/nks-js-rybbit/issues)
+- [GitHub Repository](https://github.com/nks-hub/rybbit-ts)
+- [npm Package](https://www.npmjs.com/package/@nks-hub/rybbit-ts)
+- [Issue Tracker](https://github.com/nks-hub/rybbit-ts/issues)
 
 ---
 

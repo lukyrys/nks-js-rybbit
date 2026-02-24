@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `@nks-hub/rybbit` SDK provides a comprehensive set of typed event tracking methods that follow **GA4 naming conventions** using `snake_case`. Each event has a dedicated helper method with full TypeScript support for type safety and IDE autocomplete.
+The `@nks-hub/rybbit-ts` SDK provides a comprehensive set of typed event tracking methods that follow **GA4 naming conventions** using `snake_case`. Each event has a dedicated helper method with full TypeScript support for type safety and IDE autocomplete.
 
 ### Key Features
 
