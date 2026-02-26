@@ -162,19 +162,28 @@ npm run dev
 
 ---
 
+## Contributing
+
+Contributions are welcome! For major changes, please open an issue first.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: description'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## Support
+
+- 📧 **Email:** dev@nks-hub.cz
+- 🐛 **Bug reports:** [GitHub Issues](https://github.com/nks-hub/rybbit-ts/issues)
+- 🐸 **Rybbit Analytics:** [rybbit.io](https://rybbit.io)
+
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-## Links
-
-- [Rybbit Analytics](https://rybbit.io)
-- [GitHub Repository](https://github.com/nks-hub/rybbit-ts)
-- [npm Package](https://www.npmjs.com/package/@nks-hub/rybbit-ts)
-- [Issue Tracker](https://github.com/nks-hub/rybbit-ts/issues)
-
----
-
-**Made with privacy in mind** - No cookies, no consent popups, no tracking bloat.
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/nks-hub">NKS Hub</a>
+</p>
